@@ -1,0 +1,14 @@
+{
+  "name": "ts-study",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/qiheizhiya/typeScript-study.git",
+  "author": "qiheizhiya <953136447@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "dependencies": {
+    "@types/node": "^14.14.21"
+  }
+}

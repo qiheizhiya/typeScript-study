@@ -1,0 +1,10 @@
+{
+    "compilerOptions": { // 编译选项
+        "target": "ES2016", // 配置编译目标的代码的版本标准
+        "module": "CommonJS", // 配置编译目标使用的模块化标准
+        "lib": ["ES2016"],
+        "outDir": "./dist", // 生成的文件路径
+    },
+    "include": ["./src"] // 只打包哪个文件夹里面的
+    // "files": ["./src/index.ts"] // 只打包哪些文件
+}
