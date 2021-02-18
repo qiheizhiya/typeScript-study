@@ -1,10 +1,14 @@
-enum Level {
-    level1 = 1,
-    level2,
-    level3
+enum Permission {
+    Read = 1,
+    Write = 2,
+    Create = 4,
+    Delete = 8
 }
 
-let l: Level = Level.level1
-l = Level.level3
+let p: Permission = Permission.Read | Permission.Write | Permission.Create
 
-console.log(l)
+function hasPermission (target: Permission, per: Permission) {
+    return (target & per) === per
+}
+p = p ^ Permission.Create
+console.log(hasPermission(p, Permission.Create))
