@@ -6,7 +6,8 @@
   "author": "qiheizhiya <953136447@qq.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "build": "rd /s /q dist & tsc"
   },
   "dependencies": {
     "@types/node": "^14.14.21"

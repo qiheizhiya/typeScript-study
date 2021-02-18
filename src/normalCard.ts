@@ -1,46 +1,21 @@
-type Deck = NormalCard[]
-type Color = "♥"|"♠"|"♦"|"♣"
-type NormalCard = {
-    color: Color,
-    mark: number
-}
+import { Color, Mark } from './enums'
+import { Deck } from './types'
 
 function createDeck(): Deck {
     const deck: Deck = []
-    for (let i = 0; i <= 13; i++) {
-        deck.push({
-            color: "♠",
-            mark: i
-        })
-        deck.push({
-            color: "♣",
-            mark: i
-        })
-        deck.push({
-            color: "♥",
-            mark: i
-        })
-        deck.push({
-            color: "♦",
-            mark: i
-        })
+    const marks = Object.values(Mark)
+    const colors = Object.values(Color)
+    for (const mark of marks) {
+        for (const color of colors) {
+            deck.push({ mark, color })
+        }
     }
     return deck
 }
-
 function printDeck (deck: Deck) {
     let result = '\n'
     deck.forEach((cark, i) => {
-        let str = cark.color
-        if (cark.mark <= 10) {
-            str += cark.mark
-        } else if (cark.mark === 11) {
-            str += "J"
-        } else if (cark.mark === 12) {
-            str += 'Q'
-        } else if (cark.mark === 13) {
-            str +="K"
-        }
+        let str = cark.color + cark.mark
         result += str + '\t'
         if ((i + 1) % 4 === 0) {
             result += '\n'

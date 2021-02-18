@@ -1,14 +1,9 @@
-enum Permission {
-    Read = 1,
-    Write = 2,
-    Create = 4,
-    Delete = 8
-}
+// import age, { name, sum } from "./myModule";
+// import fs from 'fs'
 
-let p: Permission = Permission.Read | Permission.Write | Permission.Create
+// console.log(name)
+// console.log(sum(3, 4))
+// console.log(age)
+// console.log(fs.readFileSync)
 
-function hasPermission (target: Permission, per: Permission) {
-    return (target & per) === per
-}
-p = p ^ Permission.Create
-console.log(hasPermission(p, Permission.Create))
+import myModule = require('./myModule')
