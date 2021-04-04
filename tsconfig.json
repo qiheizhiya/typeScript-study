@@ -2,13 +2,14 @@
     "compilerOptions": { // 编译选项
         "target": "ESNext", // 配置编译目标的代码的版本标准
         "module": "commonJs", // 配置编译目标使用的模块化标准
-        "lib": ["ES2020"],
+        "lib": ["ES6"],
         "outDir": "./dist", // 生成的文件路径
         "strictNullChecks": true,
         "noImplicitUseStrict": true,
         "removeComments": true,
         "esModuleInterop": true,
         "noEmitOnError": true,
+        "strictPropertyInitialization": true,
         "moduleResolution": "Node"
     },
     "include": ["./src"] // 只打包哪个文件夹里面的

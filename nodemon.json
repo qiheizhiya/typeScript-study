@@ -3,7 +3,7 @@
         "NODE_ENV": "development"
     },
     "watch": ["src"],
-    "exec": "ts-node src/normalCard/normalCard",
+    "exec": "ts-node src/index.ts",
     "ext": "ts tsx",
     "ignore": [
         "package*.json",

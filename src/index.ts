@@ -1,64 +1,56 @@
-// interface User {
-//   name: string,
-//   age: number,
-//   sayHello: () => void
-// }
-// // type User = {
-// //   name: string,
-// //   age: number
-// // }
-// let u: User = {
-//   name: '123',
-//   age: 123,
-//   sayHello() {
-//     console.log('12312312233213')
-//   }
-// }
-// type Condition = {
-//   (n: number): boolean
-// }
-// interface Condition {
-//   (n: number): boolean
-// }
-// function sum(number: number[], callback: Condition) {
-//   let s = 0
-//   number.forEach(n => {
-//     if (callback(n)) {
-//       s += n
-//     }
-//   })
-//   return s
-// }
+/* 
+class user {
+  readonly id: number
+  gender: "男" | "女" = "男"
+  pid?: string
 
-import { Interface } from "readline"
+  private publishNumber: number = 3
+  private curNumber: number = 0
 
-// let arr = [1,2,3,4,5]
-// console.log(sum(arr, (n) => n < 3 ))
+  constructor(public name: string, private _age?: number ) {
+    this.id = Math.random()
+    this.name = name;
+    this._age = _age
+  }
 
-interface A {
-  T1: string
+  print () {
+    console.log(this.publishNumber, this.curNumber)
+  }
+
+  // set age (value: number) {
+  //   if (value < 0) {
+  //     this._age = 0
+  //   } else if (value > 200) {
+  //     this._age = 200
+  //   } else {
+  //     this._age = value
+  //   }
+  // }
+
+  get age () {
+    return this._age
+  }
 }
 
-interface B {
-  T2: number
-}
+const u = new user('杰')
+// u.age = 2000
+console.log(u)
 
-interface C extends A,B {
-  T3: boolean
-}
+*/
 
-// type A = {
-//   T1: string
-// }
-// type B = {
-//   T2: number
-// }
-// type C = {
-//   T3: boolean
-// } & B & A
+import { Deck } from './normalCard/deck'
 
-let u:C = {
-  T2: 33,
-  T1: '123',
-  T3: true
-}
+const deck = new Deck()
+
+console.log('=================洗牌前===============')
+deck.print()
+deck.shuffle()
+const { player1, player2, player3, stash } = deck.publish()
+console.log('=================玩家一的牌===============')
+player1.print()
+console.log('=================玩家二的牌===============')
+player2.print()
+console.log('=================玩家三的牌===============')
+player3.print()
+console.log('=================玩家四的牌===============')
+stash.print()
