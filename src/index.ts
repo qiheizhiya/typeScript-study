@@ -1,56 +1,38 @@
-/* 
-class user {
-  readonly id: number
-  gender: "男" | "女" = "男"
-  pid?: string
+// function take<T>(arr: T[], n: number) {
+//   if (n >= arr.length) {
+//     return arr
+//   }
+//   const newArr: T[] = []
+//   for (let i = 0; i < n; i++) {
+//     newArr.push(arr[i])
+//   }
+//   return newArr
+// }
 
-  private publishNumber: number = 3
-  private curNumber: number = 0
+// const result = take<number>([1,2,3,4], 2)
 
-  constructor(public name: string, private _age?: number ) {
-    this.id = Math.random()
-    this.name = name;
-    this._age = _age
-  }
+// const arr = [1,2,3,4]
 
-  print () {
-    console.log(this.publishNumber, this.curNumber)
-  }
+// type callback<T> = (n: T, i: number) => boolean
+// interface callback<T> {
+//   (n: T, i: number): boolean
+// }
 
-  // set age (value: number) {
-  //   if (value < 0) {
-  //     this._age = 0
-  //   } else if (value > 200) {
-  //     this._age = 200
-  //   } else {
-  //     this._age = value
-  //   }
-  // }
+// function filter<T>(arr: T[], callback: callback<T>) {
+//   const newArr:T[] = []
+//   arr.forEach((n, i) => {
+//     if (callback(n, i)) {
+//       newArr.push(n)
+//     }
+//   })
+//   return newArr
+// }
 
-  get age () {
-    return this._age
-  }
-}
+// const arr = [1,2,3,4]
 
-const u = new user('杰')
-// u.age = 2000
-console.log(u)
+// console.log(filter(arr, n => n % 2 !== 0))
 
-*/
+import { ArrayHelper } from './ArrayHelper'
+const helper = new ArrayHelper([3, 4, 5, 6, 7])
 
-import { Deck } from './normalCard/deck'
-
-const deck = new Deck()
-
-console.log('=================洗牌前===============')
-deck.print()
-deck.shuffle()
-const { player1, player2, player3, stash } = deck.publish()
-console.log('=================玩家一的牌===============')
-player1.print()
-console.log('=================玩家二的牌===============')
-player2.print()
-console.log('=================玩家三的牌===============')
-player3.print()
-console.log('=================玩家四的牌===============')
-stash.print()
+helper.shuffle()
