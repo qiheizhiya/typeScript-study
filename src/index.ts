@@ -235,12 +235,42 @@
 // const my = new MyArray()
 // my[4] = 5
 
-class A {
-    [index: number]: any
-    [index: string]: any
+// class A {
+//     [index: number]: any
+//     [index: string]: any
+// }
+
+// const a = new A()
+
+// a[0] = 'sdsdada'
+// a['abc'] = 'abc'
+
+// this指向
+
+// interface IUser {
+//     name: string,
+//     sayHello(this: IUser): void
+// }
+
+
+// const obj: IUser = {
+//     name: '杰',
+//     sayHello () {
+//         console.log(this.name)
+//     }
+// }
+
+// const func = obj.sayHello
+
+// obj.sayHello()
+
+class User {
+    constructor (public name: string) {}
+
+    sayHello (this: User) {
+        console.log(this, this.name)
+    }
 }
 
-const a = new A()
-
-a[0] = 'sdsdada'
-a['abc'] = 'abc'
+const u = new User('杰')
+const say = u.sayHello
