@@ -1,85 +1,246 @@
-// function take<T>(arr: T[], n: number) {
-//   if (n >= arr.length) {
-//     return arr
-//   }
-//   const newArr: T[] = []
-//   for (let i = 0; i < n; i++) {
-//     newArr.push(arr[i])
-//   }
-//   return newArr
-// }
+// # 继承
+// class Tank {
+//     protected name:string = '坦克'
 
-// const result = take<number>([1,2,3,4], 2)
-
-// const arr = [1,2,3,4]
-
-// type callback<T> = (n: T, i: number) => boolean
-// interface callback<T> {
-//   (n: T, i: number): boolean
-// }
-
-// function filter<T>(arr: T[], callback: callback<T>) {
-//   const newArr:T[] = []
-//   arr.forEach((n, i) => {
-//     if (callback(n, i)) {
-//       newArr.push(n)
+//     sayHello () {
+//         console.log(this.name)
 //     }
-//   })
-//   return newArr
 // }
 
-// const arr = [1,2,3,4]
+// class PlayerTank extends Tank {
+//     name:string = '玩家坦克'
+//     life:number = 5
 
-// console.log(filter(arr, n => n % 2 !== 0))
-
-// import { ArrayHelper } from './ArrayHelper'
-// const helper = new ArrayHelper([3, 4, 5, 6, 7])
-
-// helper.shuffle()
-
-
-// interface hasNameProperty {
-//     name: string
-// }
-
-// function nameToUpperCase<T extends hasNameProperty>(obj: T): T {
-//     obj.name = obj.name.split(" ").map(s => s[0].toUpperCase() + s.substr(1)).join(" ")
-//     return obj
-// }
-
-// const o = {
-//     name: 'jie jie',
-//     age: 18
-// }
-
-// const nO = nameToUpperCase(o)
-// console.log(nO)
-
-
-// function mixinArray<T, K> (arr1: T[], arr2: K[]): (T | K)[] {
-//     if (arr1.length !== arr2.length) throw new Error('数组长度不相等')
-//     let result: (T | K)[] = []
-//     for (let i = 0; i < arr1.length; i++) {
-//         result.push(arr1[i])
-//         result.push(arr2[i])
+//     test () {
+//         super.sayHello()
 //     }
-//     return result
+// }
+// class EnemyTank extends Tank {
+//     name:string = '敌方坦克'
+//     health: number = 1
+// }
+// class BossTank extends EnemyTank {
+//     name: string = 'Boss坦克'
 // }
 
-import { Dictionary } from './dictionary'
+// const p = new BossTank()
 
-const dict = new Dictionary<string, number>()
+// 抽象类
+// abstract class Chess {
+//     x: number = 0
+//     y: number = 0
 
-dict.add('1', 1)
-dict.add('2', 2)
-console.log(dict.size)
-dict.forEach((k, v) => {
-    console.log(k, ':', v)
-})
+//     abstract readonly name: string;
 
-dict.delete('1')
-console.log(dict.size)
+//     move (targetX:number, targetY:number): boolean {
+//         console.log('1. 边界判断')
+//         console.log('2. 目标位置是否有乙方棋子')
+//         console.log('3. 棋子移动规则判断')
 
-dict.clear()
+//         if (this.rule(targetX, targetY)) {
+//             this.x = targetX
+//             this.y = targetY
+//             console.log(`${this.name}移动成功`)
+//             return true
+//         }
+//         console.log(`${this.name}XXXXXXXXXXXXXXXXXXX`)
+//         return false
+//     }
 
-console.log(dict.size)
+//     protected isOutSize (): boolean {
+//         return false
+//     }
+
+//     protected targetHasMengyou (): boolean {
+//         return false
+//     }
+
+//     protected abstract rule(targetX: number, targetY: number): boolean
+// }
+
+// class Horse extends Chess {
+//     protected rule(targetX: number, targetY: number): boolean {
+//         return true
+//     }
+    
+//     readonly name: string = '马';
+// }
+
+// class Pao extends Chess {
+//     protected rule(targetX: number, targetY: number): boolean {
+//         return false
+//     }
+    
+//     readonly name: string = '炮';
+// }
+
+// class Soldier extends Chess {
+//     protected rule(targetX: number, targetY: number): boolean {
+//         return true
+//     }
+    
+//     readonly name: string = '兵';
+// }
+
+// const h = new Horse()
+// const p = new Pao()
+// const s = new Soldier()
+
+// h.move(1, 2)
+// p.move(3, 4)
+// s.move(5, 6)
+
+// # 静态成员
+
+// class User {
+//     static users: User[] = []
+//     constructor (public loginId: string, public loginPwd: string, public name: string, public age: number) {
+//         User.users.push(this)
+//     }
+//     sayHello () {
+//         console.log(`大家好，我叫${this.name}，今年${this.age}，我的账号是${this.loginId}`)
+//     }
+//     static login(loginId: string, loginPwd: string): User | undefined {
+//         return User.users.find(u => u.loginId === loginId && u.loginPwd === loginPwd)
+//     }
+// }
+
+// const u1 = new User('a1', '123', '瓜瓜', 11)
+
+// const u2 = new User('a2', '123', '瓜瓜2', 15)
+
+// const u3 = new User('a3', '123', '瓜瓜3', 16);
+
+// const user = User.login('a4', '123')
+
+// if (user) {
+//     user.sayHello()
+// } else {
+//     console.log('登录失败')
+// }
+
+// class Board {
+    // private static _board?: Board
+    // static readonly board: Board = new Board()
+    // width: number = 500
+    // height: number = 700
+
+    // init () {
+    //     console.log('初始化棋盘')
+    // }
+
+    // private constructor () {}
+
+    // static createBoard () {
+    //     if (this._board) return this._board
+    //     this._board = new Board()
+    //     return this._board
+    // }
+// }
+
+// const board1 = Board.createBoard()
+
+// const board2 = Board.createBoard()
+
+// const board = Board.board
+// console.log(board)
+
+// # 接口
+
+// import { Animal, Dog, Lion, Monkey, Tiger } from './animals'
+// import { IFireShow, IWisdomShow } from './iterfaces'
+
+// const animals: Animal[] = [
+//     new Lion('王富贵', 11),
+//     new Tiger('坤坤', 21),
+//     new Monkey('小六', 1),
+//     new Dog('旺财', 3),
+//     new Dog('狗剩', 6)
+// ]
+
+// function hasFireShow (ani: object): ani is IFireShow{
+//     if ((ani as IFireShow).singleFire || (ani as IFireShow).doubleFire) {
+//         return true
+//     }
+//     return false
+// }
+
+// // 1. 所有动物打招呼
+// animals.forEach(it => it.sayHello())
+
+// // 2. 所有会进行火圈表演的动物，完成火圈表演
+// animals.forEach(it => {
+//     if (hasFireShow(it)) {
+//         it.singleFire()
+//         it.doubleFire()
+//     }
+// })
+
+// // 3. 所有会智慧表演的动物，完成智慧表演
+
+// function hasWisdomShow (ani: object): ani is IWisdomShow {
+//     if ((ani as IWisdomShow).suanshu || (ani as IWisdomShow).dance) {
+//         return true
+//     }
+//     return false
+// }
+
+// animals.forEach(it => {
+//     if (hasWisdomShow(it)) {
+//         it.suanshu()
+//         it.dance()
+//     }
+// })
+
+// class A {
+//     a1: string = ''
+//     a2: string = ''
+// }
+
+// class B {
+//     b1: string = ''
+//     b2: string = ''
+// }
+
+// interface C extends A, B {}
+
+// const c: C = {
+//     a1: '1',
+//     a2: '1',
+//     b1: '1',
+//     b2: '1'
+// }
+
+// # 索引器
+
+// class User {
+//     [prop: string]: any
+//     constructor (public name: string, public age: number) {}
+
+//     sayHello() {
+
+//     }
+// }
+
+// const u = new User('aa', 22)
+// u.pid = '123'
+
+// class MyArray {
+//     [index: number]: any
+//     0 = 1
+//     1 = 'asdf'
+//     2 = 'asdsasda'
+// }
+
+// const my = new MyArray()
+// my[4] = 5
+
+class A {
+    [index: number]: any
+    [index: string]: any
+}
+
+const a = new A()
+
+a[0] = 'sdsdada'
+a['abc'] = 'abc'
