@@ -12,7 +12,8 @@
         "strictPropertyInitialization": true,
         "moduleResolution": "Node",
         "noImplicitAny": true,
-        "noImplicitThis": true
+        "noImplicitThis": true,
+        "experimentalDecorators": true
     },
     "include": ["./src"] // 只打包哪个文件夹里面的
     // "files": ["./src/index.ts"] // 只打包哪些文件
