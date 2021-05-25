@@ -1,91 +1,105 @@
-// import { printObj, descriptor } from './Descriptor'
-import { IsNotEmpty, MinLength, validate } from 'class-validator'
-import 'reflect-metadata'
-import { plainToClass, Type } from 'class-transformer'
-// @descriptor('用户')
-// class User {
-//     @descriptor('账户')
-//     loginId!: string
+// const a = 'asdff'
 
-//     @descriptor('密码')
+// let b: typeof a = 'asdff'
+
+// class User {
+//     loginId!: string
 //     loginPwd!: string
 // }
-
 
 // const u = new User()
-// u.loginId = '123'
-// u.loginPwd = '123'
-// printObj(u)
+// const u2 = u
 
+// const A = User
 
-// @Reflect.metadata('a', '一个类')
-// class A {
-//     @Reflect.metadata('prop', '一个参数')
-//     prop1: string | undefined
-// }
-// const aaa = new A()
-// a.prop1 = '123'
-// console.log(Reflect.getMetadata('a', A))
-// console.log(Reflect.getMetadata('prop', aaa, 'prop1'))
-
-// class RegUser {
-//     @IsNotEmpty({ message: '账号不能为空' })
-//     @MinLength(5, { message: '账号至少有五个字符' })
-//     loginId!: string
-//     loginPwd!: string
-//     age!: number
-//     gender!: '男' | '女'
+// function createUser(cls: typeof User): User {
+//     return new cls()
 // }
 
-// const post = new RegUser()
-// validate(post).then(res => {
-//     console.log(res)
-// })
+// const u = createUser(User)
+
+
+// keyof
+
+// interface User {
+//     loginId: string
+//     loginPwd: string
+//     age: number
+// }
+
+// function printUserProperty (obj: User, prop: keyof User) {
+//     console.log(obj[prop])
+// }
+
+// in
+
+// interface User {
+//     loginId: string
+//     loginPwd: string
+// }
+
+// interface Article {
+//     title: string
+//     description: string
+// }
+
+// type Obj = {
+//     [p in keyof User]: User[p]
+// }
+
+// type UserReadonly = {
+//     readonly [p in keyof User]: User[p]
+// }
+
+// type UserPartial = {
+//     [p in keyof User]?: User[p]
+// }
+
+// type Partialo<T> = {
+//     [p in keyof T]: T[p]
+// }
+
+// const u: Partialo<Article> = {
+//     title: '123',
+//     description: '123'
+// }
+
+
+// 预定义的类型演算
+
+// interface User {
+//     age: number
+//     name: string
+// }
+
+// const u: Exclude<'a'|'b'|'c', 'b'|'c'> = 'a'
+
+// type T = '男' | '女' | null | undefined
+
+// const u: Exclude<T, null | undefined>
+
+// const u: Extract<T, null | undefined> = null
+
+// const u: NonNullable<T> = '女'
+
+// type func = () => number
+
+// function sum(a: number) {
+//     return a
+// }
+
+// type returnTypes = ReturnType<typeof sum>
 
 // class User {
-//     id!: number
-//     firstName!: string
-//     lastName!: string
-//     @Type(() => Number)
-//     age!: number
+//     loginId!: string
+// }
+// let u: InstanceType<typeof User>
 
-//     getName() {
-//         return this.firstName + '  ' + this.lastName
-//     }
+// type twoParamsCon = new (args1: any, arg2: any) => User
 
-//     isAdult () {
-//         return this.age > 36 && this.age < 60
-//     }
+// const A:twoParamsCon = class Text{
+//     loginId: string = '123'
+//     constructor(a: any, b: any) {}
 // }
 
-// const datas = [
-//     { id: 1, firstName: 'Johny', lastName: 'Cage', age: 27 },
-//     { id: 2, firstName: 'Ismoil', lastName: 'Somoni', age: 50 },
-//     { id: 3, firstName: 'Luke', lastName: 'Decascos', age: 12 }
-// ]
-
-// datas.forEach((data) => {
-//     const user = plainToClass(User, data)
-//     console.log(user)
-//     console.log(user.getName())
-// })
-
-
-// class MyMath {
-
-//     sum(a: number, @test b: number) {
-//         return a + b
-//     }
-// }
-
-// function test(target: any, method: string, index: number) {
-//     console.log(target, method, index)
-// }
-
-class User {
-    @Reflect.metadata('a', 'b')
-    loginId!: number
-
-    @Reflect.metadata('b', 'b')
-    loginPwd!: number
-}
+// type Inst = InstanceType<twoParamsCon>
