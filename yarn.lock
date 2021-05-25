@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@types/lodash@^4.14.170":
+  version "4.14.170"
+  resolved "https://registry.nlark.com/@types/lodash/download/@types/lodash-4.14.170.tgz#0d67711d4bf7f4ca5147e9091b847479b87925d6"
+  integrity sha1-DWdxHUv39MpRR+kJG4R0ebh5JdY=
+
 "@types/node@^14.14.21":
   version "14.14.21"
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.21.tgz?cache=0&sync_timestamp=1610658214168&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-14.14.21.tgz#d934aacc22424fe9622ebf6857370c052eae464e"
@@ -30,6 +35,11 @@ libphonenumber-js@^1.9.7:
   version "1.9.18"
   resolved "https://registry.nlark.com/libphonenumber-js/download/libphonenumber-js-1.9.18.tgz#443f2ccb8c59eca55f6c2a9e968aeed5bd75fe7b"
   integrity sha1-RD8sy4xZ7KVfbCqeloru1b11/ns=
+
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.nlark.com/lodash/download/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
 
 reflect-metadata@^0.1.13:
   version "0.1.13"

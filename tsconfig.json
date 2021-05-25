@@ -14,8 +14,11 @@
         "noImplicitAny": true,
         "noImplicitThis": true,
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "typeRoots": ["./node_modules/@types", "./src/types"]
+        // "declaration": true,
+        // "sourceMap": true
     },
-    "include": ["./src"] // 只打包哪个文件夹里面的
+    "include": ["./src", "index.d.ts"] // 只打包哪个文件夹里面的
     // "files": ["./src/index.ts"] // 只打包哪些文件
 }
