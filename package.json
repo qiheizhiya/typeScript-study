@@ -13,5 +13,8 @@
     "@types/node": "^14.14.21",
     "class-validator": "^0.13.1",
     "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "class-transformer": "^0.4.0"
   }
 }
